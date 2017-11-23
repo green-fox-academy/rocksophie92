@@ -1,3 +1,16 @@
 h1 {
-    color: rgb(255, 238, 0);
+    color: red;
+}
+
+h2 {
+    color: purple;
+}
+
+ol >li {
+    color: pink;
+    text-decoration: underline;
+}
+
+ol >li:last-child {
+    color: black;
 }
