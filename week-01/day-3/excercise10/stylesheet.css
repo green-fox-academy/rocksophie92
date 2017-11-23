@@ -1,40 +1,70 @@
-
-p {
-    display: block;
-    width: 300px;
-    background: purple;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    height: 300px;
-    line-height: 300px;
+span {
+    color: #fff;
     font-size: 16px;
-    padding: 30px;
+    font-family: 'Inconsolata', monospace;
 }
 
-article[class="first"] img {
+
+.bg {
+    display: block;
     position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 50px;
-    height: 50px;
-    z-index: 0;
 }
 
-article[class="second"] img {
-    position: relative;
-    left: 15px;
-    top: 15px;
-    width: 50px;
-    height: 50px;
-    z-index: 0;
+.bg.first {
+    background: orange;
+    left: 16x;
+    top: 16px;
 }
 
-article[class="third"] img {
+.bg.second {
+    background: purple;
+    left: 16x;
+    top: 116px;
+}
+
+.bg.third {
+    background: grey;
+    left: 16x;
+    top: 216px;
+}
+
+.wrapper.first {
     position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 50px;
-    height: 50px;
-    z-index: 0;
+    left: 16x;
+    top: 16px;
+    display: flex;
+    width: 300px;
+    flex-wrap: auto;
+    background: transparent;
+    text-align: center;
+    padding: 16px;
 }
+
+.wrapper.second {
+    position: absolute;
+    left: 16x;
+    top: 116px;
+    display: flex;
+    width: 300px;
+    flex-wrap: auto;
+    background: transparent;
+    text-align: center;
+    padding: 16px;
+}
+
+.wrapper.third {
+    position: absolute;
+    left: 16x;
+    top: 216px;
+    display: flex;
+    width: 300px;
+    flex-wrap: auto;
+    background: transparent;
+    text-align: center;
+    padding: 16px;
+}
+
+img {
+    z-index: -1;
+}
+
