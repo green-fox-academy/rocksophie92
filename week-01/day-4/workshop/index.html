@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <main class="wrapper">
+            <div class="box whole title">
+                <h1>Profile</h1>
+            </div>
+            <div class="box whole">
+                <div class="box half header">
+                    Personal information
+                </div>
+                <div class="box half header">
+                    Contact data
+                </div>
+            </div>
+            <div class="box half left">
+                <span class="tinybox whole name">
+                    <p class="label">Name </p>
+                    <input type="text" class="inputfield" placeholder="First name" required autofocus>
+                    <br/>
+                </span>
+                <span class="tinybox whole">
+                    <div class="tinybox half birthyear">
+                        <p class="label">Birth date </p>
+                        <input type="text" class="inputfield" placeholder="eg. 1992" required>
+                        <br/>
+                    </div>
+                    <div class="tinybox half gender">
+                        <p class="label">Gender </p>
+                        <main class="radio_container">
+                            <input type="radio" id="female" name="gender" required>
+                            <br/>
+                            <label for="female">Female</label>
+                            <br/>
+                            <input type="radio" id="male" name="gender" required>
+                            <br/>
+                            <label for="male">Male</label>
+                            <br/>
+                        </main>
+                    </div>
+                </span>
+                <span class="tinybox whole brands">
+                    <fieldset>
+                        <legend>Your favourite brands</legend>
+                        <input type="checkbox" id="adidas" />
+                        <label for="adidas">Adidas</label>
+                        <br/>
+                        <input type="checkbox" id="nike" />
+                        <label for="nike">Nike</label>
+                        <br/>
+                        <input type="checkbox" id="tesla" />
+                        <label for="tesla">Tesla</label>
+                    </fieldset>
+                </span>
+            </div>
+            <div class="box half right">
+                <span class="tinybox whole phone">
+                    <p class="label">Phone number </p>
+                    <input type="tel" class="inputfield" placeholder="+36701234567" required>
+                    <br/>
+                </span>
+                <span class="tinybox whole email">
+                    <p class="label">Email address</p>
+                    <input type="email" class="inputfield" placeholder="blabla@email.com" required>
+                    <br/>
+                </span>
+                <span class="tinybox whole facebook">
+                    <p class="label">Facebook profile </p>
+                    <input type="link" class="inputfield" placeholder="https://facebook.com..." required>
+                    <br/>
+                </span>
+                <span class="tinybox whole twitter">
+                    <p class="label">Twitter profile </p>
+                    <input type="link" class="inputfield" placeholder="https://twitter.com..." required>
+                    <br/>
+                </span>
+                <span class="tinybox whole house">
+                    <p class="label">Type of your house? </p>
+                    <select class="inputfield">
+                        <option>flat</option>
+                        <option>house</option>
+                        <option>dormitory</option>
+                    </select><br/>
+                </span>
+            </div>
+            <div class="box half"></div>
+            <div class="box whole content"></div>
+        </main>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+body{
+	background-color: #fffdf4;
+	font-family: Arial;
+}
+header{
+	text-align: center;
+}
+h1{
+	font-weight: normal;
+	font-size: 14px;
+	font-style: italic;
+	margin: 3rem;
+	text-align: center;
+}
+h2{
+	font-size: 55px;
+	font-family: Vollkorn SC;
+	text-align: center;
+}
+fieldset{
+	border: 1px solid #006400;
+}
+legend{
+	font-family: Vollkorn SC;
+}
+p{
+	font-family: Vollkorn SC;
+	margin: 3rem;
+	text-align: center;
+}
+label[type="radio"]{
+	margin: 4rem;
+	padding-bottom: 20px;
+}
+label[for="first"],
+label[for="second"],
+label[for="third"]{
+	margin: 15px;
+	padding-bottom: 20px;
+	font-style: italic;
+}
+input:checked + label[for="first"],
+input:checked + label[for="second"],
+input:checked + label[for="third"]{
+	color: #006400;
+}
+label[for="code"], label[for="sport"], label[for="sleep"]{
+	line-height: 24px;
+	font-size: 14px;
+	font-family: Vollkorn SC;
+}
+input:checked + label[for="code"],
+input:checked + label[for="sport"],
+input:checked + label[for="sleep"]{
+	color: #006400;
+}
+input[type="submit"]{
+	background: #050;
+	padding:15px;
+	color: #fff;
+	font-size: 20px;
+	letter-spacing: 0.5em;
+	border-radius: 25px;
+	border: 0;
+	box-shadow: 1px 3px 5px rgba(0,0,0,20);
+	width: 200px;
+}

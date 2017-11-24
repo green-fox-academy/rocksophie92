@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="stylesheet.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<img src="header-image.png">
+		</header>
+		<h1>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h1>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque lobortis arcu vel viverra. Maecenas non convallis leo, id dignissim ligula. Vivamus molestie ipsum felis, volutpat mollis diam lacinia in. Pellentesque viverra massa ac sem sodales sodales. Duis sed congue tellus. Curabitur odio nisl, efficitur quis neque ac, luctus tempor ligula. Aliquam maximus sit amet urna vel maximus. Quisque nec accumsan orci. Maecenas porta ante urna, auctor tincidunt turpis auctor laoreet. Vivamus finibus nulla at augue auctor, sit amet tincidunt elit semper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vitae elit sit amet justo rhoncus commodo eu vitae tortor.</p>
+		<form action="thanks.html" method="get">
+			<input type="radio" id="first" name="num">
+			<label for="first">Coffe is indispensable</label><br/>
+			<input type="radio" id="second" name="num">
+			<label for="second">I prefer water</label><br/>
+			<input type="radio" id="third" name="num">
+			<label for="third">Please let me sleep</label><br/>
+
+			<h1>How much do you like mornings?
+			<input type="number" min="0" max="100" step="10" value="50">
+			%</h1>
+			<fieldset>
+				<legend>Personal Info</legend>
+				<input type="text" placeholder="First name" required autofocus><br/>
+				<input type="text" placeholder="Last name" required><br/>
+				<input type="email" placeholder="Email adress" required><br/>
+				<input type="tel" placeholder="Telephone number" required minlength="12" maxlength="12"><br/>
+				<input type="date"><br/>
+				<!--<input type="range"><br/>
+					<input type="color"><br/>-->
+			</fieldset>
+			<fieldset>
+      			<legend>introduction</legend>
+      			<textarea rows="5" cols="100" maxlength="100"> </textarea><br/>
+      		</fieldset>
+			<fieldset>
+				<legend>Hobbies</legend>
+				<input type="checkbox" id="code" />
+				<label for="code">Make a webpage</label><br/>
+				<input type="checkbox" id="sport" />
+				<label for="sport">Jump Around!</label><br/>
+				<input type="checkbox" id="sleep" />
+				<label for="sleep">Sleeping all day long</label>
+      		</fieldset>
+      		<h1><input type="submit" value="Submit" /></h1>
+		</form>
+	</body>
+</html>

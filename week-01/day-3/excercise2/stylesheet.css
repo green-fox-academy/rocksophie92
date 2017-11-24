@@ -14,30 +14,25 @@ span {
     
     }
 
-div[id="box_n"] {
+.box {
+    width: 348px;
+    height: 133px;
+    line-height: 133px;
+}
+
+    .box.n {
     background: rgb(230,118,118);
-    width: 348px;
-    height: 133px;
-    line-height: 133px;
 }
 
-#box_e {
+.box.e {
     background: rgb(242,240,98);
-    width: 348px;
-    height: 133px;
-    line-height: 133px;
 }
 
-#box_s {
+.box.s {
     background: rgb(169,230,230);
-    width: 348px;
-    height: 133px;
-    line-height: 133px;
 }
 
-#box_w {
+.box.w {
     background: rgb(118,146,228);
-    width: 348px;
-    height: 133px;
-    line-height: 133px;
 }
+
