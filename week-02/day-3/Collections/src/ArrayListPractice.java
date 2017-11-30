@@ -426,8 +426,5 @@ public class ArrayListPractice {
             System.out.println("Sum of ages of kids with less than 5 candies :" +sum + "\n");
         }
 
-
-
-
     }
 
