@@ -18,6 +18,7 @@ public class Practice {
         // subInt(randomArray, 6);
 
         subStrList(fool, steveJobsTodoList);
+
     }
 
     private static void subStrList(String randomString, String[] randomList) {

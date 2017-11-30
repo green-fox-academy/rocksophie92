@@ -14,28 +14,28 @@ namespace FoodPrepApp
 
         static void Main(string[] args)
         {
-            Protein();
-            Carb();
-            Greens();
+            Run();
+        
+            }
+
+        public static void Run()
+        {
             Console.WriteLine();
             String userInput;
             userInput = Console.ReadLine();
-         
 
-
-                if (userInput == "n")
-                {
-                    Protein();
-                    Carb();
-                    Greens();
-                    Console.ReadLine();
-                } if (userInput == "x")
+            if (userInput == "n")
+            {
+                Protein();
+                Carb();
+                Greens();
+                Console.ReadLine();
+            }
+            if (userInput == "x")
             {
                 Environment.Exit(0);
             }
-            }
-
-
+        }
         public static void Protein()
         {
 
