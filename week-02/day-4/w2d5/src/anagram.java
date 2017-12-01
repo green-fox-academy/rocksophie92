@@ -1,44 +1,50 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import static java.util.Arrays.sort;
+import static java.util.Arrays.stream;
+import static java.util.Collections.sort;
 
 public class anagram {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
+   /* isPalindrome("boab");
+    isAnagram("iamlordvoldemorT", "tommarvoloriddle");
+    palindromeCreator("whatever");
+   */
+  }
 
-        isPalindrome("boab");
-        isAnagram("iamlordvoldemort", "tommarvoloriddle");
-    }
-//TODO fix this, because it doesn't work
-    private static boolean isAnagram(String string1, String string2) {
-        int string1Length = string1.length();
-        int string2Length = string2.length();
-        String[] array1 = new String[string1Length];
-        String[] array2 = new String[string2Length];
+  private static void isAnagram(String string1, String string2) {
+    characterizator(string1);
+    System.out.println(boolCompare(characterizator(string1), characterizator(string2)));
+  }
 
-        if (array1.equals(array2)) {
-            System.out.println("true");
-            return true;
-        } else {
-            System.out.println("false");
-            return false;
-        }
-    }
+  public static String palindromeCreator(String string1) {
+    String mirroredString = (palindromeReverser(string1)) + string1;
+    System.out.println(mirroredString);
+    return mirroredString;
+  }
 
-    public static boolean isPalindrome(String string1) {
+  public static String palindromeReverser(String string1) {
+    String reverse = new StringBuffer(string1).reverse().toString();
+    System.out.println(boolCompare(string1, reverse));
+    return reverse;
+  }
 
-        String reverse = new StringBuffer(string1).reverse().toString();
-        if (string1.equals(reverse)) {
-            System.out.println("true");
-            return true;
+  public static boolean isPalindrome(String string1) {
+    return palindromeReverser(string1).matches(string1);
+  }
 
-        } else {
-            System.out.println("false");
-            return false;
-        }
-    }
+  public static boolean boolCompare(Object a, Object b) {
+    return a.equals(b);
+  }
 
-
+  public static List<Character> characterizator(String string1) {
+    // stream(string1.toCharArray()).boxed().collect(Collectors.toList());
+    List<Character> list1 = string1.toLowerCase().chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+    Collections.sort(list1);
+    return list1;
+  }
 }
