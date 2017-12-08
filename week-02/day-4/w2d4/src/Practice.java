@@ -11,11 +11,6 @@ public class Practice {
         int[] randomArray = new int[]{34, 12, 24, 9, 5};
         String[] steveJobsTodoList = new String[]{"stay", "hungry", "stay", "foolish"};
         String fool = "fool";
-        // sortNumbers(randomArray, false);
-
-        //  subStr("this is what I'm searching in", "searching");
-
-        // subInt(randomArray, 6);
 
         subStrList(fool, steveJobsTodoList);
 

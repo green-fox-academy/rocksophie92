@@ -315,17 +315,11 @@ public class ArrayListPractice {
     }
 
     public static void quoteOrder() {
-        ArrayList<String> list = new ArrayList<String>(Arrays.asList("What", "I", "do", "create,", "I", "cannot", "not", "understand."));
-        list.add(2, list.get(5));
-        list.set(6, list.get(3));
-        list.remove(3);
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < list.size(); i++) {
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList("What", "I", "do",
+                "create,", "I", "cannot", "not", "understand."));
 
-            builder.append(list.get(i)+" ");
-        }
+        Collections.swap(list, 2, 5);
 
-        String listNice = builder.toString();
         System.out.println(listNice);
 
     }
