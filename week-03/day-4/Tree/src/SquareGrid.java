@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Random;
 
 public class SquareGrid {
 
@@ -21,6 +22,7 @@ public class SquareGrid {
 
   // plot an order n H-tree, centered on (x, y) of the given side length
   public static void draw(int n, double x, double y, double size) {
+    Random r = new Random();
     if (n == 0) return;
     drawFox(x, y, size);
 
@@ -44,11 +46,39 @@ public class SquareGrid {
 
     double x = 0.5, y = 0.5;   // center of H-tree
     double size = 0.5;         // side length of H-tree
+
+   // StdDraw.setPenColor(Color.PINK);
+   // starDrawer(size*2);
+
     draw(n, x, y, size);
   }
 
   public static void connectTheDots(int arrayStart0, int arrayStart1, int arrayEnd0, int arrayEnd1) {
     StdDraw.line(arrayStart0+100, arrayStart1-55, arrayEnd0+100, arrayEnd1-55);
+  }
+
+  public static void starDrawer (double size) {
+    double width = size;
+    double height = size;
+    StdDraw.setPenColor(Color.BLACK);
+    StdDraw.line(width / 2, 0, width / 2, height / 1);
+    StdDraw.line(0, height / 2, width / 1, height / 2);
+    StdDraw.setPenColor(Color.RED);
+    for (int i = 0; i < 10; i++) {
+      StdDraw.line(width / 2, i * width / 20, (10 - i) * width / 20, height / 2);
+    }
+    StdDraw.setPenColor(Color.GREEN);
+    for (int i = 0; i < 10; i++) {
+      StdDraw.line(width / 2, i * width / 20, (10 + i) * width / 20, height / 2);
+    }
+    StdDraw.setPenColor(Color.YELLOW);
+    for (int i = 0; i < 10; i++) {
+      StdDraw.line(width / 2, (i + 10) * width / 20, (i) * width / 20, height / 2);
+    }
+    StdDraw.setPenColor(Color.BLUE);
+    for (int i = 0; i < 10; i++) {
+      StdDraw.line(width / 2, (10 + i) * width / 20, (20 - i) * width / 20, height / 2);
+    }
   }
 
 }

@@ -33,11 +33,11 @@ public class Drawing extends JPanel {
     int[] polygonYPoints = new int[]{20, 30, 40, 50, 60};
 
 
-    int[][] allDots= new int[][]{{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70}, {120, 100}, {85, 130}, {50, 100}};
+    int[][] allDots = new int[][]{{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70}, {120, 100}, {85, 130}, {50, 100}};
 
 
-
-    this.setBackground(Color.BLACK);
+    this.setBackground(Color.WHITE);
+    starDrawer(width, height, g, Color.MAGENTA, 3);
 
    /* g.setColor(Color.CYAN);
     g.setColor(Color.MAGENTA);
@@ -106,47 +106,45 @@ public class Drawing extends JPanel {
       centerLiner(width, i * 20, g, Color.BLUE);
     }*/
 // STAR DRAWING
-    lineDrawer( width/2, 0, width/2, height/1, Color.MAGENTA, g);
-    lineDrawer(0, height/2, width/1,height/2, Color.magenta, g);
-    for (int i = 0; i <10 ; i++) {
-      lineDrawer(width/2, i*width/20, (10-i)*width/20, height/2, Color.MAGENTA, g);
+
+  }
+
+  public static void starDrawer(int width, int height, Graphics g, Color color, int n) {
+    Drawing d = new Drawing();
+    width = d.getWidth();
+    height = d.getHeight();
+
+    lineDrawer(width / 2, 0, width / 2, height / 1, Color.MAGENTA, g);
+    lineDrawer(0, height / 2, width / 1, height / 2, Color.magenta, g);
+    for (int i = 0; i < 10; i++) {
+      lineDrawer(width / 2, i * width / 20, (10 - i) * width / 20, height / 2, Color.MAGENTA, g);
     }
-    for (int i = 0; i <10 ; i++) {
-      lineDrawer(width/2, i*width/20, (10+i)*width/20, height/2, Color.MAGENTA, g);
+    for (int i = 0; i < 10; i++) {
+      lineDrawer(width / 2, i * width / 20, (10 + i) * width / 20, height / 2, Color.MAGENTA, g);
     }
-    for (int i = 0; i <10 ; i++) {
-      lineDrawer(width/2, (i+10)*width/20, (i)*width/20, height/2, Color.MAGENTA, g);
+    for (int i = 0; i < 10; i++) {
+      lineDrawer(width / 2, (i + 10) * width / 20, (i) * width / 20, height / 2, Color.MAGENTA, g);
     }
-    for (int i = 0; i <10 ; i++) {
-      lineDrawer(width/2, (10+i)*width/20, (20-i)*width/20, height/2, Color.MAGENTA, g);
+    for (int i = 0; i < 10; i++) {
+      lineDrawer(width / 2, (10 + i) * width / 20, (20 - i) * width / 20, height / 2, Color.MAGENTA, g);
+    }
+    if (n == 0) {
+      return;
+    }
+    starDrawer(width / 2, height / 2, g, Color.PINK, n - 1);
     }
 
-    // CONNECT THE DOTS
 
-    for (int i = 0; i < allDots.length-1; i++) {
+  // CONNECT THE DOTS
+
+   /* for (int i = 0; i < allDots.length-1; i++) {
       for (int j = 0; j < allDots[i].length-1; j++) {
         connectTheDots(allDots[i][j],allDots[i][j+1],allDots[i+1][j], allDots[i+1][j+1], g, Color.BLUE);
     }
     }
+*/
 
-    lineDrawer(dot1[0], dot1[1], dot2[0], dot2[1], Color.BLUE, g);
-    lineDrawer(dot2[0], dot2[1], dot3[0], dot3[1], Color.BLUE, g);
-    lineDrawer(dot3[0], dot3[1], dot4[0], dot4[1], Color.BLUE, g);
-    lineDrawer(dot4[0], dot4[1], dot5[0], dot5[1], Color.BLUE, g);
-    lineDrawer(dot5[0], dot5[1], dot6[0], dot6[1], Color.BLUE, g);
-    lineDrawer(dot6[0], dot6[1], dot7[0], dot7[1], Color.BLUE, g);
-    lineDrawer(dot7[0], dot7[1], dot8[0], dot8[1], Color.BLUE, g);
-    lineDrawer(dot8[0], dot8[1], dot1[0], dot1[1], Color.BLUE, g);
-   /* connectTheDots(dot1, dot2, g, Color.BLUE);
-    connectTheDots(dot2, dot3, g, Color.BLUE);
-    connectTheDots(dot3, dot4, g, Color.BLUE);
-    connectTheDots(dot4, dot5, g, Color.BLUE);
-    connectTheDots(dot5, dot6, g, Color.BLUE);
-    connectTheDots(dot6, dot7, g, Color.BLUE);
-    connectTheDots(dot7, dot8, g, Color.BLUE);
-    connectTheDots(dot8, dot1, g, Color.BLUE);*/
-
-    drawHexagon(200, 200, g, Color.GREEN); // bottom
+   /* drawHexagon(200, 200, g, Color.GREEN); // bottom
     drawHexagon(248, 172, g, Color.GREEN); // bottom right
     drawHexagon(152, 172, g, Color.GREEN); // bottom left
     drawHexagon(200, 144, g, Color.GREEN); // middle
@@ -160,8 +158,8 @@ public class Drawing extends JPanel {
     drawHexagon(200-56-32-8, 144, g, Color.GREEN); //
     drawHexagon(152-48, 116-28, g, Color.GREEN); //
     drawHexagon(248, 116, g, Color.GREEN); //
-    drawHexagon(200, 88, g, Color.GREEN);  //
-  }
+    drawHexagon(200, 88, g, Color.GREEN);  //*/
+
 
 
   public static void lineDrawer(int x1, int y1, int x2, int y2, Color color, Graphics g) {
@@ -210,30 +208,31 @@ public class Drawing extends JPanel {
     g.setColor(Color.getHSBColor(r.nextFloat(), r.nextFloat(), r.nextFloat()));
     g.fillRect(canvasWidth / 2 - size / 2, canvasHeight / 2 - size / 2, size, size);
   }
-public static void connectTheDots(int arrayStart0, int arrayStart1, int arrayEnd0, int arrayEnd1, Graphics g, Color color) {
-  g.setColor(color);
-  g.drawLine(arrayStart0+100, arrayStart1-55, arrayEnd0+100, arrayEnd1-55);
-}
 
-public static void drawHexagon (int x1, int y1, Graphics g, Color color) {
-  int h =32;
-  int x2 = x1+h;
+  public static void connectTheDots(int arrayStart0, int arrayStart1, int arrayEnd0, int arrayEnd1, Graphics g, Color color) {
+    g.setColor(color);
+    g.drawLine(arrayStart0 + 100, arrayStart1 - 55, arrayEnd0 + 100, arrayEnd1 - 55);
+  }
 
-  int radius = h/2;
-  int mx = x1+h/2;
-  int b= 28;
-  int my = y1+b;
+  public static void drawHexagon(int x1, int y1, Graphics g, Color color) {
+    int h = 32;
+    int x2 = x1 + h;
+
+    int radius = h / 2;
+    int mx = x1 + h / 2;
+    int b = 28;
+    int my = y1 + b;
 
 
     g.setColor(color);
-  g.drawLine(x1, y1, x2, y1);
-  g.drawLine(x1, y1+2*b, x2, y1+2*b);
-  g.drawLine(x1, y1, mx-h, my);
-  g.drawLine(mx-h, my, x1, y1+2*b);
-  g.drawLine(x2,y1+2*b,mx+h, my);
-  g.drawLine(mx+h, my, x2, y1);
+    g.drawLine(x1, y1, x2, y1);
+    g.drawLine(x1, y1 + 2 * b, x2, y1 + 2 * b);
+    g.drawLine(x1, y1, mx - h, my);
+    g.drawLine(mx - h, my, x1, y1 + 2 * b);
+    g.drawLine(x2, y1 + 2 * b, mx + h, my);
+    g.drawLine(mx + h, my, x2, y1);
 
-}
+  }
 
 
 }
