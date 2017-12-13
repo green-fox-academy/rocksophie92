@@ -4,15 +4,11 @@ import java.util.Random;
 
 public class Ship {
   Random r = new Random();
-  static int numberOfWins;
-  static int crewSize;
+   int crewSize;
   static String name;
   static Pirate captain = new Pirate();
   static List<Pirate> crew;
 
-  public void setNumberOfWins(int numberOfWins) {
-    this.numberOfWins = numberOfWins;
-  }
 
   public void setCrewSize(int crewSize) {
     this.crewSize = crewSize;
@@ -30,7 +26,9 @@ public class Ship {
     this.crew = crew;
   }
 
-
+  public int getCrewSize() {
+    return crewSize;
+  }
 
   public static final String SHIP_STATUS = "The size of the crew of %s is %d, captain drank %d rums so far and he is %s.";
   public static final String BATTLE_WIN_MSG = "You won, now you have %d points";
@@ -55,19 +53,16 @@ public class Ship {
 
   public boolean battle(Ship otherShip) {
     if (this.crewSize > otherShip.crewSize) {
-      this.numberOfWins++;
-      System.out.println(String.format(BATTLE_WIN_MSG, this.numberOfWins));
+      System.out.println(PirateStrings.WIN_MESSAGE);
       captain.drinkSomeRum();
       killPiratesInBattle(otherShip);
       return true;
     } else if (this.crewSize < otherShip.crewSize) {
-      otherShip.numberOfWins++;
       System.out.println("You lost!");
       killPiratesInBattle(this);
-
       return false;
     } else {
-      System.out.println("The ships are equally strong, none of them sank today.");
+      System.out.println("The ships are equally strong, none of them sank today." + " " + this.getCrewSize() + " " + otherShip.getCrewSize());
       return false;
     }
   }
