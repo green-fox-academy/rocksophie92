@@ -5,36 +5,54 @@ import java.util.Random;
 public class Pirate {
 
   Random r = new Random();
-  static boolean drunk = false;
+
   static boolean isDead = false;
   static boolean isPassedOut = false;
   static boolean isCaptain = false;
-  int rumsConsumed;
+  static int rumsConsumed;
   static String status;
+  int result;
 
-  public static final String PASSED_OUT = "passed out";
-  public static final String DEAD = "dead";
-  public static final String SOBER = "sober (OMG, bring the rum!)";
-  public static final String DRUNK = "drunk";
+  public int getRumsConsumed() {
+    return rumsConsumed;
+  }
 
-  public void pirateStatus() {
-    if (isPassedOut && !isDead) {
-      status=PASSED_OUT;
-    } else if (isDead) {
-      status=DEAD;
-    } else if (!drunk && !isDead && !isPassedOut) {
-      status=SOBER;
-    } else if (!isDead && !isPassedOut && drunk) {
-      status = DRUNK;
+  public static void setIsDead(boolean isDead) {
+    Pirate.isDead = isDead;
+  }
+
+
+  public static void setIsPassedOut(boolean isPassedOut) {
+    Pirate.isPassedOut = isPassedOut;
+  }
+
+  public static void setIsCaptain(boolean isCaptain) {
+    Pirate.isCaptain = isCaptain;
+  }
+
+  public static void setStatus(String status) {
+    Pirate.status = status;
+  }
+
+  public static void setRumsConsumed(int rumsConsumed) {
+    Pirate.rumsConsumed = rumsConsumed;
+  }
+
+  public String pirateStatus() {
+    if (isDead) {
+      status = PirateStrings.DEAD.toString();
+    } else {
+      if (isPassedOut) {
+        status = PirateStrings.PASSED_OUT.toString();
+      } else {
+        status = PirateStrings.RUMS_CONSUMED.toString();
+      }
     }
+    return status;
   }
 
   public Pirate() {
 
-  }
-
-  public Pirate(boolean drunk) {
-    this.drunk = drunk;
   }
 
   public Pirate(int rumsConsumed) {
@@ -42,41 +60,95 @@ public class Pirate {
   }
 
 
-  public void drinkSomeRum() {
-    if (isDead == true) {
-      System.out.println("He is dead");
-    } else if (isPassedOut == true) {
-      System.out.println("He's already passed out, can't drink right now");
+  public PirateStrings drinkSomeRum() {
+    if (isDead) {
+      System.out.println(PirateStrings.DEAD_SPEECH);
+      return PirateStrings.DEAD_SPEECH;
+    } else if (isPassedOut) {
+      System.out.println(PirateStrings.PASSED_OUT);
+      return PirateStrings.PASSED_OUT;
     } else {
-      drunk = true;
       rumsConsumed++;
+      return PirateStrings.RUMS_CONSUMED;
     }
   }
 
-  public void howsItGoingMate() {
-    if (drunk == true) {
-      for (int i = 0; i < r.nextInt(3); i++) {
-        System.out.println("Pour me anudder");
+  public boolean die() {
+    isDead = true;
+    return isDead;
+  }
+
+  public boolean passOut() {
+    isPassedOut = true;
+    System.out.println(PirateStrings.PASSED_OUT);
+    return isPassedOut;
+  }
+
+  public PirateStrings howsItGoingMate() {
+    if (rumsConsumed <= 4) {
+      System.out.println(PirateStrings.DRINK_MORE);
+      rumsConsumed++;
+      return PirateStrings.DRINK_MORE;
+    } else {
+      System.out.println(PirateStrings.BEFORE_PASSOUT);
+      isPassedOut = true;
+      return PirateStrings.BEFORE_PASSOUT;
+    }
+  }
+
+  public int brawl(Pirate pirate2) {
+    if (!isDead) {
+      if (!isPassedOut) {
+        if (resultGenerator() == 0) {
+          dieInBrawl();
+          return 0;
+        } else if (resultGenerator() == 1) {
+          winInBrawl(pirate2);
+          return 1;
+        } else {
+          bothPassOutInBrawl(pirate2);
+          return 2;
+        }
+      } else {
+        System.out.println(PirateStrings.PASSED_OUT.toString());
+        return -1;
       }
     } else {
-      System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
-      isPassedOut = true;
+      System.out.println(PirateStrings.DEAD_SPEECH.toString());
+      return -1;
     }
   }
 
-  public int brawl(Pirate pirate2, Random r) {
-    int result = r.nextInt(3);
-    if (result == 0) {
-      System.out.println("You died, the other pirate threw you to the sharks");
-      this.isDead = true;
-    } else if (result == 1) {
-      System.out.println("You won the battle!");
-      pirate2.isDead = true;
-    } else if (result == 2) {
-      System.out.println("you were both too drunk and passed out.");
-      this.isPassedOut = true;
-      pirate2.isPassedOut = true;
+  public PirateStrings dieInBrawl() {
+    this.die();
+    return PirateStrings.DEAD_SPEECH;
+  }
+
+  public PirateStrings winInBrawl(Pirate pirate2) {
+    System.out.println(PirateStrings.WIN_MESSAGE);
+    pirate2.isDead = true;
+    return PirateStrings.WIN_MESSAGE;
+  }
+
+  public PirateStrings bothPassOutInBrawl(Pirate pirate2) {
+    System.out.println(PirateStrings.BOTH_PASSEDOUT_MESSAGE);
+    this.isPassedOut = true;
+    pirate2.isPassedOut = true;
+    return PirateStrings.BOTH_PASSEDOUT_MESSAGE;
+  }
+
+  public int resultGenerator() {
+    Random r = new Random();
+    int randomNum = r.nextInt(3);
+    int resultNum;
+
+    if (randomNum == 0) {
+      resultNum = 0;
+    } else if (randomNum == 1) {
+      resultNum = 1;
+    } else {
+      resultNum = 2;
     }
-    return result;
+    return resultNum;
   }
 }
