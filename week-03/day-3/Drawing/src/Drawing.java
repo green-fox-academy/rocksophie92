@@ -77,7 +77,7 @@ public class Drawing extends JPanel {
       //  rectDrawer(30+i*100, 30+i*70, 200+i*30, 200+i*40, g);
     }
    */
-/*    for (int i = 0; i < 10; i+=width/5) {
+    for (int i = 0; i < 10; i+=width/5) {
       for (int j = 0; j < 10; j++) {
         if (i+j % 2 == 0) {
             checkerBoardDrawer(i * width / 10, j * height / 10, width / 10, height / 10, g);
@@ -86,7 +86,7 @@ public class Drawing extends JPanel {
       }
 
 
-    } *//*
+    } /*
 
     for (int i = 0; i <6; i++) {
       rectDrawer((i*50)*2^i, (i*50)*2^i, i*50, i*50, g);
