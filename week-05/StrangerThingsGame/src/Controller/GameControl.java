@@ -1,7 +1,6 @@
 package Controller;
 
 import View.Frame;
-
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,22 +11,21 @@ Frame panel = new Frame();
 
   public GameControl() {
     super();
-
     addKeyListener(new KeyListener() {
 
       @Override
       public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == 'd') {
-          panel.xMovement(5);
+          panel.rightMovement();
         }
         if (e.getKeyChar() == 'a') {
-          panel.xMovement(-5);
+          panel.leftMovement();
         }
         if (e.getKeyChar() == 's') {
-          panel.yMovement(5);
+          panel.downMovement();
         }
         if (e.getKeyChar() == 'w') {
-          panel.yMovement(-5);
+          panel.upMovement();
         }
       }
 
@@ -35,27 +33,34 @@ Frame panel = new Frame();
       public void keyReleased(KeyEvent e) {
 
         if (e.getKeyChar() == 'd') {
-          panel.xMovement(0);
+          panel.horizontalStop();
         }
-
         if (e.getKeyChar() == 'a') {
-          panel.xMovement(0);
+          panel.horizontalStop();
         }
-
         if (e.getKeyChar() == 's') {
-          panel.yMovement(0);
+          panel.verticalStop();
         }
-
         if (e.getKeyChar() == 'w') {
-          panel.yMovement(0);
+          panel.verticalStop();
         }
-
       }
 
       @Override
       public void keyPressed(KeyEvent e) {
 
-
+        if (e.getKeyChar() == 'd') {
+          panel.horizontalStop();
+        }
+        if (e.getKeyChar() == 'a') {
+          panel.horizontalStop();
+        }
+        if (e.getKeyChar() == 's') {
+          panel.verticalStop();
+        }
+        if (e.getKeyChar() == 'w') {
+          panel.verticalStop();
+        }
       }
     });
 
@@ -64,5 +69,4 @@ Frame panel = new Frame();
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
   }
-
 }
