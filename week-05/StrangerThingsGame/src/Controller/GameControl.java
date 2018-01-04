@@ -65,7 +65,7 @@ Frame panel = new Frame();
     });
 
     setContentPane(panel);
-    setSize(500,500);
+    setSize(1000, 1000);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
   }
