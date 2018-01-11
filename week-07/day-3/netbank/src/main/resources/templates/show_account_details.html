@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8"></meta>
+    <title>SimBank - Account Details</title>
 </head>
 <body>
-$END$
+<p th:text="'Hello, ' + ${name} + '!'"/>
+<span>
+    <h1>Account holder: </h1>
+    <br/>
+    <p th:text="${name}"/>
+    <br/>
+    <h1>Balance: </h1>
+    <br/>
+    <p th:text="${balance}"/>
+    <br/>
+    <h1>Animal type: </h1>
+    <br/>
+    <p th:text="${animal}"/>
+</span>
 </body>
 </html>

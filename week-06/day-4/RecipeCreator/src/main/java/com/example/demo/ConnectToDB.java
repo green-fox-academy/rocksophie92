@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import javax.validation.constraints.Null;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,11 +20,11 @@ public class ConnectToDB {
       System.out.println("Not connected");
     }
 
-    String query = "insert into recipes (recipe_name, category, isVegan, isVegetarian, creationTime, rating)"
+/*    String query = "insert into recipes (recipe_name, category, isVegan, isVegetarian, creationTime, rating)"
             + " values (?, ?, ?, ?, ?, ?)";
-    PreparedStatement preparedStmt;
+    PreparedStatement preparedStmt;*/
     try {
-      preparedStmt = con.prepareStatement(query);
+/*      preparedStmt = con.prepareStatement(query);
 
       preparedStmt.setString(1, "Lentil soup");
       preparedStmt.setString(2, "Soup");
@@ -31,10 +32,14 @@ public class ConnectToDB {
       preparedStmt.setBoolean(4, true);
       preparedStmt.setInt(5, 30);
       preparedStmt.setInt(6, 5);
-      preparedStmt.execute();
+      preparedStmt.execute();*/
       con.close();
     } catch (SQLException e) {
       e.printStackTrace();
+      System.out.println("SQL exception");
+    } catch (NullPointerException ne) {
+      ne.printStackTrace();
+      System.out.println("Nullpointer exception on connection");
     }
   }
 }

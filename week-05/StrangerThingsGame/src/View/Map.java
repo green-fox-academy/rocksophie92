@@ -31,8 +31,8 @@ public class Map {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    wallTile = new Tile(wall, 100, Wx, Wy);
-    pathTile = new Tile(path, 100, Px, Py);
+    //wallTile = new Tile(wall, 100, Wx, Wy);
+    //pathTile = new Tile(path, 100, Px, Py);
   }
 
   public String mapPattern() {

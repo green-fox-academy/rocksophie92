@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8"></meta>
+    <title>List Accounts</title>
 </head>
 <body>
-$END$
+<div>
+    <h2>Accounts List</h2>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>balance</th>
+            <th>type</th>
+        </tr>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.name}"></td>
+            <td th:text="${account.balance}"></td>
+            <td th:text="${account.animalType}"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
