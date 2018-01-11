@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LeafGen - Add new recipe</title>
+</head>
+<header>Add new recipe</header>
+<body>
+    <p th:form>
+    <form action="#" th:action="@{/recipe}" th:object="${recipe}" method="post">
+        <p>Id: <input type="text" th:field="*{recipe.name}" /></p>
+        <p>Message: <input type="text" th:field="*{recipe.category}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <div>
+            <br>
+            <input type="text" class="recipeNameField" placeholder="Recipe name">
+            <br>
+            <select>
+                <option>breakfast</option>
+                <option>snack</option>
+                <option>one-pot dish</option>
+                <option>soup</option>
+                <option>bread</option>
+                <option>sauce</option>
+                <option>smoothie</option>
+            </select>
+            <br>
+            <span>
+                <input type="checkbox" class="newRecipeFormElement" id="vegan">
+                <label for="vegan">Vegan</label>
+            </span>
+            <br>
+            <span>
+                <input type="checkbox" class="newRecipeFormElement" id="vegetarian">
+                <label for="vegetarian">Vegetarian</label>
+            </span>
+            <br>
+            <button>Add</button>
+        </div>
+    </form>
+    </p>
+    </body>
+</html>
