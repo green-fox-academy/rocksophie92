@@ -10,13 +10,18 @@ public class UserFactory {
 
   User user;
 
-  public User getClient() {
-    User client = new Client();
+  public Client getClient() {
+    Client client = new Client();
     return client;
   }
 
-  public User getHairdresser() {
-    User hairdresser = new Hairdresser();
+  public Hairdresser getHairdresser() {
+    Hairdresser hairdresser = new Hairdresser();
     return hairdresser;
+  }
+
+  public User getUser() {
+    User user = new User();
+    return user;
   }
 }

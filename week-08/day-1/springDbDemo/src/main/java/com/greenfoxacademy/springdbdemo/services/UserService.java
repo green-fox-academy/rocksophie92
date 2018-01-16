@@ -10,14 +10,11 @@ import java.util.List;
 public interface UserService {
 
   List<User> users();
-  Client getClient(int id);
-  boolean login(Client client);
-  Client findOneClient(String emailAddress);
-  Hairdresser findOneHairdresser(String emailAddress);
-  void register(Client client);
-  void modifyClientData(Client client);
-  void create(Client client);
+  User getUser(int id);
+  User findOne(String emailAddress);
+  void create(User user);
   void delete(int id);
-
-
+  void login(User user);
+  void register(User user);
+  void modifyUserData(User user);
 }

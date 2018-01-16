@@ -7,10 +7,10 @@
 </head>
 <body>
 <h1>Login with your email address</h1>
-<form action="#" th:action="@{/login}" th:object="${client}" method="post">
+<form action="#" th:action="@{/login}" th:object="${user}" method="post">
     <label for="email">Email address</label>
     <input id="email" type="text" name="email" th:field="*{email}"/>
-    <input type="submit" value="Login"/>
+    <input class="btn btn-primary" type="submit" value="Login"/>
 </form>
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>

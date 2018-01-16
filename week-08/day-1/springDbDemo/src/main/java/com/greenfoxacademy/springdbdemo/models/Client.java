@@ -2,15 +2,13 @@ package com.greenfoxacademy.springdbdemo.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
-@Entity
-@Table(name = "client")
 public class Client extends User{
 
   private String phoneNumber;
 
   public Client() {
-    super();
   }
 
   public Client(String name, String phoneNumber, String email) {
@@ -18,10 +16,9 @@ public class Client extends User{
     this.name = name;
     this.phoneNumber = phoneNumber;
     this.email = email;
+    this.userType = "client";
   }
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -54,12 +51,4 @@ public class Client extends User{
     this.email = email;
   }
 
-  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-  public Collection<Appointment> getAppointments() {
-    return appointments;
-  }
-
-  public void setAppointments(Collection<Appointment> appointments) {
-    this.appointments = appointments;
-  }
 }

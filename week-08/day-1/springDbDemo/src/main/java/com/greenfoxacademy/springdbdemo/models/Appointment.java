@@ -14,11 +14,9 @@ public class Appointment implements Serializable {
   private Date date;
   private Date duration;
 
-  @ManyToOne(targetEntity = Client.class)
-  private Client client;
+  @OneToOne(targetEntity = User.class)
+  private User user;
 
-  @ManyToOne(targetEntity = Hairdresser.class)
-  private Hairdresser hairdresser;
 
   public Appointment() {
   }
@@ -26,8 +24,7 @@ public class Appointment implements Serializable {
   public Appointment(int id, Date date, Date duration, double priceInHUF, Client client, Hairdresser hairdresser) {
     this.id = id;
     this.date = date;
-    this.client = client;
-    this.hairdresser = hairdresser;
+    this.user = user;
     this.duration = duration;
   }
 
@@ -55,22 +52,13 @@ public class Appointment implements Serializable {
     this.duration = duration;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "client")
-  public Client getClient() {
-    return client;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "appointment")
+  public User getUser() {
+    return user;
   }
 
-  public void setClient(Client client) {
-    this.client = client;
-  }
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  public Hairdresser getHairdresser() {
-    return hairdresser;
-  }
-
-  public void setHairdresser(Hairdresser hairdresser) {
-    this.hairdresser = hairdresser;
+  public void setUser(User user) {
+    this.user = user;
   }
 }

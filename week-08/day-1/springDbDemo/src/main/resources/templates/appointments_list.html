@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Appointments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
 </head>
 <body>
 <h1>Appointments list</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>DURATION</th>
+    </tr>
+    <tr th:each="appointment : ${appointments}" th:object="${appointment}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{date}"></td>
+        <td th:text="*{duration}"></td>
+        <td>
+            <form action="#" th:action="@{/delete/} + *{id}" method="post">
+                <input class="btn btn-danger" value="Delete" type="submit"/>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/edit/} + *{id}" method="get">
+                <input class="btn btn-primary" value="Edit" type="submit"/>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
