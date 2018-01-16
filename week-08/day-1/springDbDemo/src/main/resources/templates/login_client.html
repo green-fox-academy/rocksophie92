@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Login user</title>
+    <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Login with your email address</h1>
+<form action="#" th:action="@{/login}" th:object="${client}" method="post">
+    <label for="email">Email address</label>
+    <input id="email" type="text" name="email" th:field="*{email}"/>
+    <input type="submit" value="Login"/>
+</form>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>
