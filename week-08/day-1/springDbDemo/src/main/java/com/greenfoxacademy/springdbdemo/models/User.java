@@ -13,7 +13,8 @@ public class User {
   String phoneNumber;
   String userType;
 
-  @OneToOne(targetEntity = User.class)
+  private Collection<Appointment> appointments;
+
   private Appointment appointment;
 
   @Id
@@ -58,12 +59,20 @@ public class User {
     this.userType = userType;
   }
 
-  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
   public Appointment getAppointment() {
     return appointment;
   }
 
   public void setAppointment(Appointment appointment) {
     this.appointment = appointment;
+  }
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  public Collection<Appointment> getAppointments() {
+    return appointments;
+  }
+
+  public void setAppointments(Collection<Appointment> appointments) {
+    this.appointments = appointments;
   }
 }

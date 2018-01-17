@@ -8,30 +8,33 @@ import java.util.Date;
 @Table(name = "appointment")
 public class Appointment implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
   private Date date;
-  private Date duration;
-
-  @OneToOne(targetEntity = User.class)
+  private Date endDate;
+  private long duration;
   private User user;
-
+  private Hairdresser hairdresser;
 
   public Appointment() {
   }
 
-  public Appointment(int id, Date date, Date duration, double priceInHUF, Client client, Hairdresser hairdresser) {
-    this.id = id;
+  public Appointment(Date date, long duration, User user) {
     this.date = date;
-    this.user = user;
     this.duration = duration;
+    this.user = user;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
 
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  @Temporal(TemporalType.TIMESTAMP)
   public Date getDate() {
     return date;
   }
@@ -40,25 +43,40 @@ public class Appointment implements Serializable {
     this.date = date;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public Date getDuration() {
+  public long getDuration() {
     return duration;
   }
 
-  public void setDuration(Date duration) {
+  public void setDuration(long duration) {
+    duration = 2;
     this.duration = duration;
   }
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "appointment")
+  @Temporal(TemporalType.TIMESTAMP)
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate() {
+    long endDateInLong = getDate().getTime() + (3600000 * duration);
+    this.endDate = new Date(endDateInLong);
+  }
+
+  @ManyToOne(fetch = FetchType.LAZY)
   public User getUser() {
     return user;
   }
 
   public void setUser(User user) {
     this.user = user;
+  }
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  public Hairdresser getHairdresser() {
+    return hairdresser;
+  }
+
+  public void setHairdresser(Hairdresser hairdresser) {
+    this.hairdresser = hairdresser;
   }
 }

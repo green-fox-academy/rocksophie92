@@ -5,12 +5,14 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
+@Entity
+@Table(name="hairdresser")
 public class Hairdresser extends User {
 
   private String level;
   private Date workStart;
   private Date workEnd;
+  private Collection<Appointment> appointments;
 
   public Hairdresser() {
   }
@@ -22,6 +24,8 @@ public class Hairdresser extends User {
     this.workEnd = workEnd;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -62,4 +66,13 @@ public class Hairdresser extends User {
     this.workEnd = workEnd;
   }
 
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  public Collection<Appointment> getAppointments() {
+    return appointments;
+  }
+
+
+  public void setAppointments(Collection<Appointment> appointments) {
+    this.appointments = appointments;
+  }
 }

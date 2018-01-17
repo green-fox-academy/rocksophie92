@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+</head>
+<body>
+<h1>Appointments list</h1>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>DURATION</th>
+        <th>HAIRDRESSER</th>
+    </tr>
+    <tr th:each="appointment : ${appointments}" th:object="${appointment}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{date}"></td>
+        <td th:text="*{duration}"></td>
+        <td th:text="*{hairdresser}"></td>
+        <td>
+            <form action="#" th:action="@{/delete/} + *{id}" method="post">
+                <input class="btn btn-danger" value="Delete" type="submit"/>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/edit/} + *{id}" method="get">
+                <input class="btn btn-primary" value="Edit" type="submit"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<h1>Book a new appointment</h1>
+<form action="#" th:action="@{/book/}" method="post" th:object="${appointment}">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label for="date">Date</label>
+            <input class="form-control mb-2" id="date" type="date" name="date" th:field="*{date}"/>
+            <input type="hidden" th:field="*{endDate}"/>
+            <input type="hidden" th:field="*{id}"/>
+        </div>
+        <div class="col-auto">
+            <label for="hairdresser">Hairdresser</label>
+            <input class="form-control mb-2" id="hairdresser" type="text" th:field="*{hairdresser.name}"/>
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-primary" type="submit" value="Book"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>

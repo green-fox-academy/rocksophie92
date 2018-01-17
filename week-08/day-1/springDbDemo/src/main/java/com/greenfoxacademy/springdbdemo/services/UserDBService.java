@@ -1,12 +1,14 @@
 package com.greenfoxacademy.springdbdemo.services;
 
 import com.greenfoxacademy.springdbdemo.factories.UserFactory;
+import com.greenfoxacademy.springdbdemo.models.Appointment;
 import com.greenfoxacademy.springdbdemo.models.User;
 import com.greenfoxacademy.springdbdemo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -81,5 +83,10 @@ public class UserDBService implements UserService {
   @Override
   public void modifyUserData(User user) {
     userRepository.save(user);
+  }
+
+  public Collection<Appointment> appointments(Appointment appointment, User user) {
+    user.getAppointments().add(appointment);
+    return user.getAppointments();
   }
 }
