@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Register new user</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+   <!-- <link type="text/css" href="css/bootstrap-timepicker.min.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>-->
 </head>
 <body>
     <h1>Register</h1>
@@ -22,6 +27,17 @@
             </option>
         </select>
         <input class="btn btn-primary" type="submit" value="Register"/>
+    </form>
+    <h1>New hairdresser registration</h1>
+    <form action="#" th:action="@{/register_hairdresser/}" th:object="${hairdresser}" method="post">
+        <div>
+            <select th:field="*{level}">
+                <option th:each="level : ${hairdresserLevels}"
+                        th:value="${level}"
+                        th:text="${level}">
+                </option>
+            </select>
+        </div>
     </form>
 </body>
 </html>

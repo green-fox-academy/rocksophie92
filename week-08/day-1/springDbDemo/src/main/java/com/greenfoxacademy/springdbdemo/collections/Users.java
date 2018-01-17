@@ -1,10 +1,12 @@
 package com.greenfoxacademy.springdbdemo.collections;
 
 import com.greenfoxacademy.springdbdemo.models.User;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class Users {
 
   public List<String> userTypes;

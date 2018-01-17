@@ -6,9 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 @Entity
-@Table(name="hairdresser")
+@Table(name = "hairdresser")
 public class Hairdresser extends User {
 
+  private String name;
   private String level;
   private Date workStart;
   private Date workEnd;
@@ -17,8 +18,9 @@ public class Hairdresser extends User {
   public Hairdresser() {
   }
 
-  public Hairdresser(String level, Date workStart, Date workEnd) {
+  public Hairdresser(String level, Date workStart, Date workEnd, String name) {
     super();
+    this.name = name;
     this.level = level;
     this.workStart = workStart;
     this.workEnd = workEnd;
@@ -26,6 +28,7 @@ public class Hairdresser extends User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column
   public int getId() {
     return id;
   }
@@ -34,6 +37,7 @@ public class Hairdresser extends User {
     this.id = id;
   }
 
+  @Column
   public String getName() {
     return name;
   }
@@ -42,6 +46,7 @@ public class Hairdresser extends User {
     this.name = name;
   }
 
+  @Column
   public String getLevel() {
     return level;
   }
@@ -50,6 +55,7 @@ public class Hairdresser extends User {
     this.level = level;
   }
 
+  @Column
   public Date getWorkStart() {
     return workStart;
   }
@@ -58,6 +64,7 @@ public class Hairdresser extends User {
     this.workStart = workStart;
   }
 
+  @Column
   public Date getWorkEnd() {
     return workEnd;
   }
@@ -66,7 +73,7 @@ public class Hairdresser extends User {
     this.workEnd = workEnd;
   }
 
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "hairdresser", cascade = CascadeType.ALL)
   public Collection<Appointment> getAppointments() {
     return appointments;
   }

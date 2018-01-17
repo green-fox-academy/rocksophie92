@@ -1,10 +1,13 @@
 package com.greenfoxacademy.springdbdemo.models;
 
+import com.greenfoxacademy.springdbdemo.collections.Users;
+
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
   int id;
@@ -14,8 +17,6 @@ public class User {
   String userType;
 
   private Collection<Appointment> appointments;
-
-  private Appointment appointment;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,14 +58,6 @@ public class User {
 
   public void setUserType(String userType) {
     this.userType = userType;
-  }
-
-  public Appointment getAppointment() {
-    return appointment;
-  }
-
-  public void setAppointment(Appointment appointment) {
-    this.appointment = appointment;
   }
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
