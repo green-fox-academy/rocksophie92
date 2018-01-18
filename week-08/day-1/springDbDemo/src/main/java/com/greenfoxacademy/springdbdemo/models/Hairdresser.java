@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "hairdresser")
 public class Hairdresser extends User {
 
-  private String name;
   private String level;
   private Date workStart;
   private Date workEnd;
@@ -18,9 +17,8 @@ public class Hairdresser extends User {
   public Hairdresser() {
   }
 
-  public Hairdresser(String level, Date workStart, Date workEnd, String name) {
+  public Hairdresser(String level, Date workStart, Date workEnd) {
     super();
-    this.name = name;
     this.level = level;
     this.workStart = workStart;
     this.workEnd = workEnd;

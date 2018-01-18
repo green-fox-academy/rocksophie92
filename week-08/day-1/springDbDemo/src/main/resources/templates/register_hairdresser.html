@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register new user</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+</head>
+<body>
+<h1>Register new hairdresser</h1>
+<form action="#" th:action="@{/register_hairdresser}" th:object="${user}" method="post">
+    <input id="id" type="hidden" name="id" th:field="*{id}"/>
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" th:field="*{name}"/>
+    <label for="email">Email</label>
+    <input id="email" type="text" name="email" th:field="*{email}"/>
+    <label for="phone">Phone number</label>
+    <input id="phone" type="text" name="phone" th:field="*{phoneNumber}"/>
+    <select th:field="*{userType}">
+        <option th:each="type : ${userTypes}"
+                th:value="${type}"
+                th:text="${type}">
+        </option>
+    </select>
+    <input class="btn btn-primary" type="submit" value="Register"/>
+</form>
+
+<!-- <h1>New hairdresser registration</h1>
+
+ <form action="#" th:action="@{/register_hairdresser}" th:object="${newhairdresser}" method="post">
+     <div>
+         <select th:field="*{level}">
+             <option th:each="level : ${hairdresserLevels}"
+                     th:value="${level}"
+                     th:text="${level}">
+             </option>
+         </select>
+     </div>
+ </form>-->
+</body>
+</html>

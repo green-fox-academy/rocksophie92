@@ -14,7 +14,7 @@ public interface UserService {
   User findOne(String emailAddress);
   void create(User user);
   void delete(int id);
-  void login(User user);
   void register(User user);
   void modifyUserData(User user);
+  boolean isAlreadyUser(User user);
 }

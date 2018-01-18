@@ -1,11 +1,9 @@
 package com.greenfoxacademy.springdbdemo.repositories;
 
-import com.greenfoxacademy.springdbdemo.models.User;
+import com.greenfoxacademy.springdbdemo.models.Appointment;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
-
-  User findByEmail(String email);
+public interface AppointmentRepository extends CrudRepository<Appointment, Integer> {
 }

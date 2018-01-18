@@ -20,14 +20,9 @@ public class UserDBService implements UserService {
   @Autowired
   UserFactory userFactory;
 
-  public boolean isAlreadyUser;
-
-  public boolean getIsAlreadyUser() {
-    return isAlreadyUser;
-  }
-
-  public void setIsAlreadyUser(boolean isAlreadyUser) {
-    isAlreadyUser = isAlreadyUser;
+  @Override
+  public boolean isAlreadyUser(User user) {
+    return users().contains(user);
   }
 
   @Override
@@ -44,12 +39,7 @@ public class UserDBService implements UserService {
 
   @Override
   public User findOne(String emailAddress) {
-    for (User user : users()) {
-      if (user.getEmail().equals(emailAddress)) {
-        return user;
-      }
-    }
-    return userFactory.getUser();
+    return userRepository.findByEmail(emailAddress);
   }
 
   @Override
@@ -63,21 +53,8 @@ public class UserDBService implements UserService {
   }
 
   @Override
-  public void login(User user) {
-    if (!users().contains(user)) {
-      setIsAlreadyUser(false);
-    } else {
-      setIsAlreadyUser(true);
-    }
-  }
-
-  @Override
   public void register(User user) {
-    User newUser = userFactory.getUser();
-    newUser.setPhoneNumber(user.getPhoneNumber());
-    newUser.setEmail(user.getEmail());
-    newUser.setName(user.getName());
-    users().add(newUser);
+    userRepository.save(user);
   }
 
   @Override
