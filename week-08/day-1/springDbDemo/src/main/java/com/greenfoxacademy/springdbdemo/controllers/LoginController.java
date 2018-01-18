@@ -31,10 +31,10 @@ public class LoginController {
 
   @PostMapping(value = "/login")
   public ModelAndView addUser(@ModelAttribute User user) {
-    if (userService.findOne(user.getEmail()) !=null) {
+    if (userService.findOne(user.getEmail()) != null) {
       return new ModelAndView("redirect:/appointments");
     } else {
-      return new ModelAndView("redirect:/register");
+      return new ModelAndView("redirect:/checkpoint");
     }
   }
 }

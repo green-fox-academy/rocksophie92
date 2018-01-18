@@ -1,6 +1,6 @@
 package com.greenfoxacademy.springdbdemo.controllers;
 
-import com.greenfoxacademy.springdbdemo.collections.HairdresserLevels;
+import com.greenfoxacademy.springdbdemo.collections.HairdresserProperties;
 import com.greenfoxacademy.springdbdemo.collections.Users;
 import com.greenfoxacademy.springdbdemo.factories.UserFactory;
 import com.greenfoxacademy.springdbdemo.models.Appointment;
@@ -27,7 +27,7 @@ public class AppointmentsController {
   @Autowired
   Users users;
   @Autowired
-  HairdresserLevels hairdresserLevels;
+  HairdresserProperties hairdresserProperties;
 
 
   @GetMapping(value = "/appointments")

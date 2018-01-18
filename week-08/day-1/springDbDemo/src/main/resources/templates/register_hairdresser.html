@@ -2,40 +2,66 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Register new user</title>
+    <title>Register new hairdresser</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
           integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
 </head>
 <body>
 <h1>Register new hairdresser</h1>
-<form action="#" th:action="@{/register_hairdresser}" th:object="${user}" method="post">
-    <input id="id" type="hidden" name="id" th:field="*{id}"/>
+<form action="#" th:action="@{/register_hairdresser}" th:object="${hairdresser}" method="post">
+    <div>
+        <input type="hidden" name="userType" value="hairdresser" th:field="*{userType}"/>
+    </div>
+    <div>
+        <input id="id" type="hidden" name="id" th:field="*{id}"/>
+    </div>
     <label for="name">Name</label>
     <input id="name" type="text" name="name" th:field="*{name}"/>
-    <label for="email">Email</label>
-    <input id="email" type="text" name="email" th:field="*{email}"/>
-    <label for="phone">Phone number</label>
-    <input id="phone" type="text" name="phone" th:field="*{phoneNumber}"/>
-    <select th:field="*{userType}">
-        <option th:each="type : ${userTypes}"
-                th:value="${type}"
-                th:text="${type}">
-        </option>
-    </select>
-    <input class="btn btn-primary" type="submit" value="Register"/>
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" th:field="*{email}"/>
+    </div>
+    <div>
+        <label for="phone">Phone number</label>
+        <input id="phone" type="text" name="phone" th:field="*{phoneNumber}"/>
+    </div>
+    <!--        <div>
+                <select th:field="*{userType}">
+                    <option th:each="type : ${userTypes}"
+                            th:value="${type}"
+                            th:text="${type}">
+                    </option>
+                </select>
+            </div>-->
+    <div>
+        <select th:field="*{level}">
+            <option th:each="level : ${hairdresserLevels}"
+                    th:value="${level}"
+                    th:text="${level}">
+            </option>
+        </select>
+    </div>
+    <div>
+        <label for="workStart">Work Start</label>
+        <select id="workStart" th:field="*{workStart}">
+            <option th:each="workStart : ${workingHours}"
+                    th:value="${workStart}"
+                    th:text="${workStart}">
+            </option>
+        </select>
+    </div>
+    <div>
+        <label for="workEnd">Work End</label>
+        <select id="workEnd" th:field="*{workEnd}">
+            <option th:each="workEnd : ${workingHours}"
+                    th:value="${workEnd}"
+                    th:text="${workEnd}">
+            </option>
+        </select>
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Register"/>
+    </div>
 </form>
-
-<!-- <h1>New hairdresser registration</h1>
-
- <form action="#" th:action="@{/register_hairdresser}" th:object="${newhairdresser}" method="post">
-     <div>
-         <select th:field="*{level}">
-             <option th:each="level : ${hairdresserLevels}"
-                     th:value="${level}"
-                     th:text="${level}">
-             </option>
-         </select>
-     </div>
- </form>-->
 </body>
 </html>

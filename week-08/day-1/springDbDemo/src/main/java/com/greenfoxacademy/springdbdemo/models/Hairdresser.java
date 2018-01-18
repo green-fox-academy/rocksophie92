@@ -5,26 +5,27 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
 @Entity
 @Table(name = "hairdresser")
 public class Hairdresser extends User {
 
   private String level;
-  private Date workStart;
-  private Date workEnd;
+  private int workStart;
+  private int workEnd;
   private Collection<Appointment> appointments;
 
   public Hairdresser() {
   }
 
-  public Hairdresser(String level, Date workStart, Date workEnd) {
+  public Hairdresser(String level, int workStart, int workEnd) {
     super();
     this.level = level;
     this.workStart = workStart;
     this.workEnd = workEnd;
   }
 
-  @Id
+/*  @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column
   public int getId() {
@@ -42,7 +43,7 @@ public class Hairdresser extends User {
 
   public void setName(String name) {
     this.name = name;
-  }
+  }*/
 
   @Column
   public String getLevel() {
@@ -54,20 +55,20 @@ public class Hairdresser extends User {
   }
 
   @Column
-  public Date getWorkStart() {
+  public int getWorkStart() {
     return workStart;
   }
 
-  public void setWorkStart(Date workStart) {
+  public void setWorkStart(int workStart) {
     this.workStart = workStart;
   }
 
   @Column
-  public Date getWorkEnd() {
+  public int getWorkEnd() {
     return workEnd;
   }
 
-  public void setWorkEnd(Date workEnd) {
+  public void setWorkEnd(int workEnd) {
     this.workEnd = workEnd;
   }
 

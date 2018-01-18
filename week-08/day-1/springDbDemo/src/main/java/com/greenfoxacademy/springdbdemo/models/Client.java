@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-public class Client extends User{
+public class Client extends User {
 
   private String phoneNumber;
 

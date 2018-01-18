@@ -59,7 +59,7 @@ public class Appointment implements Serializable {
 
   public void setEndDate(Date endDate) {
     long endDateInLong = getDate().getTime() + (3600000 * duration);
-    endDate= new Date(endDateInLong);
+    endDate = new Date(endDateInLong);
     this.endDate = endDate;
   }
 
