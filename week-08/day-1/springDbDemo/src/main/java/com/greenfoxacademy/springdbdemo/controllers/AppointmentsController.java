@@ -6,7 +6,9 @@ import com.greenfoxacademy.springdbdemo.factories.UserFactory;
 import com.greenfoxacademy.springdbdemo.models.Appointment;
 import com.greenfoxacademy.springdbdemo.models.Hairdresser;
 import com.greenfoxacademy.springdbdemo.models.User;
+import com.greenfoxacademy.springdbdemo.services.AppointmentService;
 import com.greenfoxacademy.springdbdemo.services.UserDBService;
+import com.greenfoxacademy.springdbdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +22,12 @@ import javax.validation.Valid;
 @Controller
 public class AppointmentsController {
 
-  @Autowired
-  UserDBService userDBService;
-  @Autowired
-  UserFactory userFactory;
-  @Autowired
-  Users users;
-  @Autowired
-  HairdresserProperties hairdresserProperties;
+  private AppointmentService appointmentService;
 
+  @Autowired
+  public AppointmentsController(AppointmentService appointmentService) {
+    this.appointmentService = appointmentService;
+  }
 
   @GetMapping(value = "/appointments")
   public String listAppointments(Model model, @ModelAttribute("appointment") Appointment appointment, @ModelAttribute("hairdresser") Hairdresser hairdresser) {
@@ -37,11 +36,8 @@ public class AppointmentsController {
   }
 
   @PostMapping(value = "/book")
-  public String addAppointment(@Valid @ModelAttribute("appointment") Appointment appointment, @ModelAttribute("user") User user, @ModelAttribute("hairdresser") Hairdresser hairdresser, BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-      return "redirect:/appointments";
-    }
-    userDBService.appointments(appointment, user);
+  public String addAppointment(@Valid @ModelAttribute("appointment") Appointment appointment, @ModelAttribute("user") User user, @ModelAttribute("hairdresser") Hairdresser hairdresser) {
+    appointmentService.appointments(appointment, user);
     return "redirect:/appointments";
   }
 }

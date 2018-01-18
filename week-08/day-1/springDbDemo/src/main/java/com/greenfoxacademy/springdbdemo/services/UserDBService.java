@@ -3,6 +3,7 @@ package com.greenfoxacademy.springdbdemo.services;
 import com.greenfoxacademy.springdbdemo.factories.UserFactory;
 import com.greenfoxacademy.springdbdemo.models.Appointment;
 import com.greenfoxacademy.springdbdemo.models.User;
+import com.greenfoxacademy.springdbdemo.repositories.AppointmentRepository;
 import com.greenfoxacademy.springdbdemo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,13 @@ import java.util.List;
 @Service
 public class UserDBService implements UserService {
 
-  @Autowired
-  UserRepository userRepository;
+  private UserRepository userRepository;
 
   @Autowired
-  UserFactory userFactory;
+  public UserDBService(UserRepository userRepository) {
+    this.userRepository = userRepository;
+
+  }
 
   @Override
   public boolean isAlreadyUser(User user) {
@@ -60,10 +63,5 @@ public class UserDBService implements UserService {
   @Override
   public void modifyUserData(User user) {
     userRepository.save(user);
-  }
-
-  public Collection<Appointment> appointments(Appointment appointment, User user) {
-    user.getAppointments().add(appointment);
-    return user.getAppointments();
   }
 }

@@ -1,10 +1,12 @@
 package com.greenfoxacademy.springdbdemo.services;
 
+import com.greenfoxacademy.springdbdemo.models.Appointment;
 import com.greenfoxacademy.springdbdemo.models.Client;
 import com.greenfoxacademy.springdbdemo.models.Hairdresser;
 import com.greenfoxacademy.springdbdemo.models.User;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
