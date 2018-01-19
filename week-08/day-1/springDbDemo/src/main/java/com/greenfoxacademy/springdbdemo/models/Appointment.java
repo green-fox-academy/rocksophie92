@@ -12,16 +12,16 @@ public class Appointment implements Serializable {
   private Date date;
   private Date endDate;
   private long duration;
-  private User user;
+  private Client client;
   private Hairdresser hairdresser;
 
   public Appointment() {
   }
 
-  public Appointment(Date date, long duration, User user) {
+  public Appointment(Date date, long duration, Client client) {
     this.date = date;
     this.duration = duration;
-    this.user = user;
+    this.client = client;
   }
 
   @Id
@@ -64,12 +64,12 @@ public class Appointment implements Serializable {
   }
 
   @ManyToOne(fetch = FetchType.LAZY)
-  public User getUser() {
-    return user;
+  public Client getClient() {
+    return client;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setClient(Client client) {
+    this.client = client;
   }
 
   @ManyToOne(fetch = FetchType.LAZY)

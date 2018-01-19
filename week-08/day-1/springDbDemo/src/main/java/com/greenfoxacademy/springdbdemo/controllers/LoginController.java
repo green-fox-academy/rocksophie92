@@ -1,8 +1,8 @@
 package com.greenfoxacademy.springdbdemo.controllers;
 
-import com.greenfoxacademy.springdbdemo.factories.UserFactory;
-import com.greenfoxacademy.springdbdemo.models.User;
-import com.greenfoxacademy.springdbdemo.services.UserService;
+import com.greenfoxacademy.springdbdemo.factories.ClientFactory;
+import com.greenfoxacademy.springdbdemo.models.Client;
+import com.greenfoxacademy.springdbdemo.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,25 +13,25 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-  private UserService userService;
-  private UserFactory userFactory;
+  private ClientService clientService;
+  private ClientFactory clientFactory;
 
   @Autowired
-  public LoginController(UserService userService, UserFactory userFactory) {
-    this.userService = userService;
-    this.userFactory = userFactory;
+  public LoginController(ClientService clientService, ClientFactory clientFactory) {
+    this.clientService = clientService;
+    this.clientFactory = clientFactory;
   }
 
   @GetMapping("/login")
   public ModelAndView showLogin() {
     ModelAndView m = new ModelAndView("login");
-    m.addObject("user", userFactory.getUser());
+    m.addObject("client", clientFactory.getClient());
     return m;
   }
 
   @PostMapping(value = "/login")
-  public ModelAndView addUser(@ModelAttribute User user) {
-    if (userService.findOne(user.getEmail()) != null) {
+  public ModelAndView addUser(@ModelAttribute Client client) {
+    if (clientService.findOne(client.getEmail()) != null) {
       return new ModelAndView("redirect:/appointments");
     } else {
       return new ModelAndView("redirect:/checkpoint");

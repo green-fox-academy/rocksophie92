@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Login with your email address</h1>
-<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+<form action="#" th:action="@{/login}" th:object="${client}" method="post">
     <label for="email">Email address</label>
     <input id="email" type="text" name="email" th:field="*{email}"/>
     <input class="btn btn-primary" type="submit" value="Login"/>

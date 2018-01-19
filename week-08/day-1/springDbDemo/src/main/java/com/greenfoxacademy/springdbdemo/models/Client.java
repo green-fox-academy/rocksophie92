@@ -4,21 +4,19 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-public class Client extends User {
+@Entity
+public class Client {
 
+  private int id;
+  private String name;
+  private String email;
   private String phoneNumber;
+  private String userType;
 
-  public Client() {
-  }
+  private Collection<Appointment> appointments;
 
-  public Client(String name, String phoneNumber, String email) {
-    super();
-    this.name = name;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.userType = "client";
-  }
-
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -35,14 +33,6 @@ public class Client extends User {
     this.name = name;
   }
 
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
   public String getEmail() {
     return email;
   }
@@ -51,4 +41,28 @@ public class Client extends User {
     this.email = email;
   }
 
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public String getUserType() {
+    return userType;
+  }
+
+  public void setUserType(String userType) {
+    this.userType = userType;
+  }
+
+  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+  public Collection<Appointment> getAppointments() {
+    return appointments;
+  }
+
+  public void setAppointments(Collection<Appointment> appointments) {
+    this.appointments = appointments;
+  }
 }

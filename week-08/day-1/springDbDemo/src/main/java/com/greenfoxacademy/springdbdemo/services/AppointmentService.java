@@ -1,16 +1,15 @@
 package com.greenfoxacademy.springdbdemo.services;
 
 import com.greenfoxacademy.springdbdemo.models.Appointment;
+import com.greenfoxacademy.springdbdemo.models.Client;
 import com.greenfoxacademy.springdbdemo.models.Hairdresser;
-import com.greenfoxacademy.springdbdemo.models.User;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
 @Service
 public interface AppointmentService {
 
-  Collection<Appointment> appointments(Appointment appointment, User user);
+  Collection<Appointment> appointments(Appointment appointment, Client client);
 
   Appointment getAppointment(int id);
 

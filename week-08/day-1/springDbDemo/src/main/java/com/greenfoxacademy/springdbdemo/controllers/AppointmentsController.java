@@ -1,18 +1,12 @@
 package com.greenfoxacademy.springdbdemo.controllers;
 
-import com.greenfoxacademy.springdbdemo.collections.HairdresserProperties;
-import com.greenfoxacademy.springdbdemo.collections.Users;
-import com.greenfoxacademy.springdbdemo.factories.UserFactory;
 import com.greenfoxacademy.springdbdemo.models.Appointment;
+import com.greenfoxacademy.springdbdemo.models.Client;
 import com.greenfoxacademy.springdbdemo.models.Hairdresser;
-import com.greenfoxacademy.springdbdemo.models.User;
 import com.greenfoxacademy.springdbdemo.services.AppointmentService;
-import com.greenfoxacademy.springdbdemo.services.UserDBService;
-import com.greenfoxacademy.springdbdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +30,8 @@ public class AppointmentsController {
   }
 
   @PostMapping(value = "/book")
-  public String addAppointment(@Valid @ModelAttribute("appointment") Appointment appointment, @ModelAttribute("user") User user, @ModelAttribute("hairdresser") Hairdresser hairdresser) {
-    appointmentService.appointments(appointment, user);
+  public String addAppointment(@Valid @ModelAttribute("appointment") Appointment appointment, @ModelAttribute Client client, @ModelAttribute("hairdresser") Hairdresser hairdresser) {
+    appointmentService.appointments(appointment, client);
     return "redirect:/appointments";
   }
 }

@@ -1,8 +1,8 @@
 package com.greenfoxacademy.springdbdemo.services;
 
 import com.greenfoxacademy.springdbdemo.models.Appointment;
+import com.greenfoxacademy.springdbdemo.models.Client;
 import com.greenfoxacademy.springdbdemo.models.Hairdresser;
-import com.greenfoxacademy.springdbdemo.models.User;
 import com.greenfoxacademy.springdbdemo.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,18 +11,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
-public class AppointmentDBService implements AppointmentService {
+public class AppointmentServiceImpl implements AppointmentService {
 
 
   private AppointmentRepository appointmentRepository;
 
   @Autowired
-  public AppointmentDBService(AppointmentRepository appointmentRepository) {
+  public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
     this.appointmentRepository = appointmentRepository;
   }
 
   @Override
-  public Collection<Appointment> appointments(Appointment appointment, User user) {
+  public Collection<Appointment> appointments(Appointment appointment, Client client) {
     Collection<Appointment> appointments = new ArrayList<>();
     appointmentRepository.findAll().forEach(appointments::add);
     return appointments;

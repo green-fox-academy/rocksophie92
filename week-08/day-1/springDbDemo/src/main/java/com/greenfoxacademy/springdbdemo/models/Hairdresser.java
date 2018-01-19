@@ -8,26 +8,35 @@ import java.util.Set;
 
 @Entity
 @Table(name = "hairdresser")
-public class Hairdresser extends User {
+public class Hairdresser {
 
   private String level;
   private int workStart;
   private int workEnd;
   private Collection<Appointment> appointments;
+  private int id;
+  private String name;
+  private String email;
+  private String phoneNumber;
+  private String userType;
 
   public Hairdresser() {
   }
 
-  public Hairdresser(String level, int workStart, int workEnd) {
-    super();
+  public Hairdresser(String level, int workStart, int workEnd, Collection<Appointment> appointments, int id, String name, String email, String phoneNumber, String userType) {
     this.level = level;
     this.workStart = workStart;
     this.workEnd = workEnd;
+    this.appointments = appointments;
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.userType = userType;
   }
 
-/*  @Id
+  @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column
   public int getId() {
     return id;
   }
@@ -36,16 +45,14 @@ public class Hairdresser extends User {
     this.id = id;
   }
 
-  @Column
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
-  }*/
+  }
 
-  @Column
   public String getLevel() {
     return level;
   }
@@ -54,7 +61,6 @@ public class Hairdresser extends User {
     this.level = level;
   }
 
-  @Column
   public int getWorkStart() {
     return workStart;
   }
@@ -63,13 +69,36 @@ public class Hairdresser extends User {
     this.workStart = workStart;
   }
 
-  @Column
   public int getWorkEnd() {
     return workEnd;
   }
 
   public void setWorkEnd(int workEnd) {
     this.workEnd = workEnd;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public String getUserType() {
+    return userType;
+  }
+
+  public void setUserType(String userType) {
+    this.userType = userType;
   }
 
   @OneToMany(mappedBy = "hairdresser", cascade = CascadeType.ALL)
