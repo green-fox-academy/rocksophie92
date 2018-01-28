@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Profile</title>
+</head>
+<body>
+<h1 th:text="${user.name} + '\'s profile'"></h1>
+<a th:href="@{${user.name} + '/scoring'}">Start a new scoring</a>
+<ul th:each="loan : ${user.loans}">
+    <li th:text="'Loan: ' + ${loan.loanAmount} + ' ' + ${loan.durationInMonths} + ' (' + ${loan.type} + ')'"></li>
+</ul>
+
+</body>
+</html>

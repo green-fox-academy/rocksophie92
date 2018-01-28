@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Scoring form</title>
+</head>
+<body>
+    <h1 th:text="'Hello ' + ${name} + ', please fill in the form below to get the scoring started.'"></h1>
+    <form action="#" th:object="${user}" th:action="@{/scoring}" method="post">
+        <input type="hidden" th:field="*{name}" th:text="*{name}"/>
+        <label for="loanType">Loan Type</label>
+        <input id="loanType" type="text" th:field="*{requestedLoanType}" th:text="*{requestedLoanType}"/>
+        <label for="salary">Salary</label>
+        <input id="salary" type="text" th:field="*{salary}" th:text="*{salary}"/>
+        <label for="spendings">Spendings</label>
+        <input id="spendings" type="text" th:field="*{spendings}" th:text="*{spendings}"/>
+        <label for="requestedloan">Requested loan amount</label>
+        <input id="requestedloan" type="text" th:field="*{requestedLoanAmount}" th:text="*{requestedLoanAmount}"/>
+        <label for="duration">Duration in months</label>
+        <input id="duration" type="text" th:field="*{durationInMonths}" th:text="*{durationInMonths}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>

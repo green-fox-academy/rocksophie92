@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HardScore - Login</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<form action="#" th:object="${user}" th:action="@{/login}" method="post">
+    <label for="userName">User name: </label>
+    <input id="userName" name="userName" type="text" th:field="*{name}"/>
+    <input type="submit" value="Login"/>
+</form>
+</body>
+</html>
