@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My chocolate inventory</title>
+</head>
+<body>
+<h1>My chocolate inventory</h1>
+<ul th:each="chocolate:${chocolates}">
+    <li th:text="${chocolate}"></li>
+</ul>
+</body>
+</html>
