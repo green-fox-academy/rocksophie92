@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Summary of orders</title>
+</head>
+<body>
+<h1>Summary</h1>
+<form th:action="@{/summary}" th:object="${myTextile}" method="get">
+    <table>
+        <tr>
+            <th>Item name</th>
+            <th>Manufacturer</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th>Amount</th>
+            <th>Sub-total price</th>
+        </tr>
+        <tr th:each="textile : ${myTextiles}">
+            <td th:text="${myTextile.itemName}"></td>
+            <td th:text="${myTextile.manufacturer}"></td>
+            <td th:text="${myTextile.category}"></td>
+            <td th:text="${myTextile.size}"></td>
+            <td th:text="${myTextile.amount}"></td>
+            <td th:text="${myTextile.subTotalPrice}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
