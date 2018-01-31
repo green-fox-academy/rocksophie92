@@ -6,21 +6,16 @@
 </head>
 <body>
 <h1>Green Fox Fashion Web Store</h1>
-<form action="#" th:action="@{/summary}" th:object="${textile}" method="post">
-    <select>
+<form action="#" th:action="@{/warehouse}" method="post">
+    <select name="itemName">
         <option value="0" text="select item name"></option>
         <option th:each="itemName : ${itemNames}" th:value="${itemName}" th:name="itemName" th:text="${itemName}"></option>
     </select>
-    <select>
-        <option th:value="s">s</option>
-        <option th:value="m">m</option>
-        <option>l</option>
-        <option>xl</option>
-        <option>xxl</option>
-        <option>xxxl</option>
+    <select name="size">
+        <option value="0" text="select item name"></option>
         <option th:each="size : ${sizes}" th:name="size" th:value="${size}" th:text="${size}">x</option>
     </select>
-    <input type="text" th:name="quantity"/>
+    <input type="text" name="quantity"/>
     <input th:type="submit" value="TOTAL"/>
 </form>
 
