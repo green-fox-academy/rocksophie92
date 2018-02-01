@@ -51,6 +51,31 @@ public class TheRestController {
     }
   }
 
-
+  @PostMapping(value = "arrays")
+  public ResponseEntity<ArraysResponse> arraysEndpoint(@RequestBody ArraysRequestMessage arraysRequestMessage) {
+    if (arraysRequestMessage.getNumbers() != null || arraysRequestMessage.getWhat() == null) {
+      if (arraysRequestMessage.getWhat().equals("sum")) {
+        int result = 0;
+        for (int i = 0; i < arraysRequestMessage.getNumbers().length; i++) {
+          result += arraysRequestMessage.getNumbers()[i];
+        }
+        return new ResponseEntity<>(new ArraysReturnMessageSum(result), HttpStatus.OK);
+      } else if (arraysRequestMessage.getWhat().equals("multiply")) {
+        int multiplyResult = 1;
+        for (int i = 0; i < arraysRequestMessage.getNumbers().length; i++) {
+          multiplyResult *= arraysRequestMessage.getNumbers()[i];
+        }
+        return new ResponseEntity<>(new ArraysReturnMessageSum(multiplyResult), HttpStatus.OK);
+      } else if (arraysRequestMessage.getWhat().equals("double")) {
+        int[] result = new int[arraysRequestMessage.getNumbers().length];
+        for (int i = 0; i < arraysRequestMessage.getNumbers().length; i++) {
+          result[i] = (arraysRequestMessage.getNumbers()[i] * 2);
+        }
+        return new ResponseEntity<>(new ArrayReturnMessage(result), HttpStatus.OK);
+      }
+    } else {
+      return new ResponseEntity<>(new ArraysErrorMessage("Please provide what to do with the numbers!"), HttpStatus.BAD_REQUEST);
+    } return new ResponseEntity<>(new ArraysResponse(), HttpStatus.OK);
+  }
 }
 

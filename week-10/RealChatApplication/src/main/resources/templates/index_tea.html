@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Teas</title>
+</head>
+<body>
+<h1>Order a tea</h1>
+<form action="#" th:action="@{/tea_order}" th:method="post" th:object="${tea}">
+    <label for="type" text="Type"></label>
+    <input id="type" th:name="type" type="checkbox" th:each="teaType : ${types}" th:value="${teaType}"
+           th:text="${teaType}"/>
+    <select th:name="source">
+        <option th:each="source : ${sources}" th:value="${source}" th:text="${source}"></option>
+    </select>
+    <label for="amount" th:text="Amount"></label>
+    <input id="amount" th:name="amount" th:type="text"/>
+    <input th:type="submit" value="OK"/>
+</form>
+</body>
+</html>

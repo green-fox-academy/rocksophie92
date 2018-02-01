@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My teas</title>
+</head>
+<body>
+<form action="#" th:action="@{/tea_list}" th:object="${tea}" th:method="get">
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Source</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="tea : ${teas}">
+            <td th:text="${tea.type}"></td>
+            <td th:text="${tea.source}"></td>
+            <td th:text="${tea.amount}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

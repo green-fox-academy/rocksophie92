@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My coffees</title>
+</head>
+<body>
+<form action="#" th:action="@{/coffee_list}" th:object="${coffee}" th:method="get">
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Source</th>
+        </tr>
+        <tr th:each="coffee : ${coffees}">
+            <td th:text="${coffee.type}"></td>
+            <td th:text="${coffee.source}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Choose your beverage</title>
+</head>
+<body>
+<form action="#" th:action="@{/choice}" th:method="post">
+    <input type="radio" name="beverage" th:each="beverageType : ${beverages}" th:value="${beverageType}"
+           th:text="${beverageType}"/>
+    <input th:type="submit" value="OK"/>
+</form>
+</body>
+</html>

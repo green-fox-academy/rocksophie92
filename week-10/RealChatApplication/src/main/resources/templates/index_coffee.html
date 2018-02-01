@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Form practice</title>
+</head>
+<body>
+<h1>Order a coffee</h1>
+<form action="#" th:action="@{/coffee_order}" th:method="post" th:object="${coffee}">
+    <label for="type" text="Type"></label>
+    <input id="type" th:name="type" th:type="text"/>
+    <select th:name="source">
+        <option th:each="source : ${sources}" th:value="${source}" th:text="${source}"></option>
+    </select>
+    <input id="amount" th:name="amount" th:type="hidden" th:value="1"/>
+    <input th:type="submit" value="OK"/>
+</form>
+</body>
+</html>
