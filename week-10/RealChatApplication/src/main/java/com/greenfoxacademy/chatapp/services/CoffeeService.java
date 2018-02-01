@@ -39,4 +39,8 @@ public class CoffeeService {
   public List<String> listAllTeaSources() {
     return coffeeRepository.getDistinctCoffeeSources();
   }
+
+  public void save(Coffee coffee) {
+    coffeeRepository.save(coffee);
+  }
 }

@@ -1,6 +1,5 @@
 package com.greenfoxacademy.retake.models;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity

@@ -10,7 +10,6 @@ import java.util.List;
 public class BeverageService {
 
   public List<String> populateBeverages() {
-    List<String> beverages = new ArrayList<>(Arrays.asList("coffee", "tea"));
-    return beverages;
+    return new ArrayList<>(Arrays.asList("coffee", "tea"));
   }
 }

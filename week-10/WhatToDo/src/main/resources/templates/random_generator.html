@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Let me tell you what to do</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</head>
+<body>
+    <h1>Push the button to discover your destiny for the next few hours</h1>
+    <form action="#" th:action="@{/random_activity}" method="post">
+        <input th:type="submit" value="Huh, let's see"/>
+    </form>
+    <label th:text="${activity.name}"></label>
+</body>
+</html>

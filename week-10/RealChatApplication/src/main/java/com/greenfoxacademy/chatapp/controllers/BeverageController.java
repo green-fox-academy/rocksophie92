@@ -26,6 +26,10 @@ public class BeverageController {
   @Autowired
   TeaService teaService;
 
+  public BeverageController() {
+    this.coffees = new ArrayList<>();
+  }
+
   @GetMapping(value = "/choice")
   public String showChoices(Model model, @RequestParam(value = "beverage", required = false) String beverage) {
     model.addAttribute("beverages", beverageService.populateBeverages());
@@ -54,16 +58,17 @@ public class BeverageController {
   public String buyCoffee(@ModelAttribute(value = "type") String type,
                           @ModelAttribute(value = "source") String source) {
     String returnStatement;
-    coffees = new ArrayList<>();
-    if (coffeeService.filterByTypeAndSource(type, source).get(0) == null) {
+    Coffee chosenCoffee = coffeeService.filterByTypeAndSource(type, source).get(0);
+    if (chosenCoffee == null) {
       returnStatement = "error_no_coffee";
     } else {
-      if (coffeeService.filterByTypeAndSource(type, source).get(0).getAmount() <= 0) {
-        coffeeService.deleteCoffeeFromDb(coffeeService.filterByTypeAndSource(type, source).get(0));
+      if (chosenCoffee.getAmount() <= 0) {
+        coffeeService.deleteCoffeeFromDb(chosenCoffee);
         returnStatement = "error_no_coffee";
       } else {
-        coffeeService.filterByTypeAndSource(type, source).get(0).setAmount(coffeeService.filterByTypeAndSource(type, source).get(0).getAmount() - 1);
-        coffees.add(coffeeService.filterByTypeAndSource(type, source).get(0));
+        chosenCoffee.setAmount(chosenCoffee.getAmount() - 1);
+        coffees.add(chosenCoffee);
+        coffeeService.save(chosenCoffee);
         returnStatement = "redirect:/coffee_list";
       }
     }
@@ -99,5 +104,4 @@ public class BeverageController {
     model.addAttribute("teas", teaService.findAll());
     return "tea_list";
   }
-
 }
